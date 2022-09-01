@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css"
+        integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE" crossorigin="anonymous">
+    <title>Todoapp</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            background-color: skyblue;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            /* background-color: rgb(247, 228, 64); */
+            background-image: linear-gradient(yellow, red);
+            height: 520px;
+            width: 500px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: column;
+        }
+
+        .container form {
+            height: 120px;
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            font-size: 25px;
+            margin-bottom: 30px;
+        }
+
+        .container form button {
+            margin-top: 10px;
+            height: 40px;
+            border-radius: 20px;
+        }
+
+        .container a button {
+            /* background-size: 20px; */
+            /* margin: 5px; */
+            padding: 5px;
+            height: 35px;
+            width: 60px;
+            /* font-size: 16px; */
+            border-radius: 10px;
+        }
+
+        .container p {
+            margin-top: 10px;
+            height: 25px;
+            font-size: 18px;
+            /* width: 50vh; */
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <section class="fw-bold">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{form}}
+                <button type="submit" class="btn btn-success p-sm-2 mb-sm-2">Submit</button>
+            </form>
+            {% for todo in tasks %}
+            <p class="text-bg-light">{{todo.task}}</p>
+            <a href="{% url 'updateItem' todo.id %}"><button
+                    class="Edit p-sm-2 btn btn-primary btn-sm">Edit</button></a>
+            <a href="{% url 'deleteItem' todo.id %}"><button
+                    class="Delete p-sm-2 btn btn-danger btn-sm">Delete</button></a>
+            {% endfor %}
+        </section>
+    </div>
+</body>
+
+</html>
