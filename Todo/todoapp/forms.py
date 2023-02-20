@@ -1,7 +1,7 @@
 from django import forms
-from .models import Mytodo
+from .models import Product
 
 class TodoForm(forms.ModelForm):
     class Meta:
-        model = Mytodo
-        fields = ['task',]
+        model = Product
+        fields = ['name','description','price']
