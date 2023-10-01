@@ -20,18 +20,8 @@
                     <form action="" method="post">
                         {% csrf_token %}
                         {{form}}
-                        <button type="submit" class="btn btn-success p-sm-2 mt-2 mb-sm-2">Submit</button>
+                        <a href="{% url 'showitem' %}"><button type="submit" class="btn btn-success p-sm-2 mt-2 mb-sm-2">Submit</button></a>
                     </form>
-                    {% for todo in tasks %}
-                    <p class="text-bg-light">{{todo.name}}</p>
-                    <p class="text-bg-light">{{todo.description}}</p>
-                    <p class="text-bg-light">{{todo.price}}</p>
-
-                    <a href="{% url 'updateItem' todo.id %}"><button
-                            class="Edit p-sm-2 btn btn-primary btn-sm">Edit</button></a>
-                    <a href="{% url 'deleteItem' todo.id %}"><button
-                            class="Delete p-sm-2 btn btn-danger btn-sm">Delete</button></a>
-                    {% endfor %}
                 </section>
             </div>
         </div>

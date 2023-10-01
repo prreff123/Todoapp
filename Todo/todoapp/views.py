@@ -11,12 +11,18 @@ def todo(request):
         form = TodoForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('showitem')
     return render(request,'todo.html',{'tasks': tasks, 'form':form})
+
+def showitem(request):
+    tasks = Product.objects.all()
+    form = TodoForm()
+    return render(request,'showitem.html',{'tasks':tasks,'form':form})
 
 def deleteItem(request, pk):
     task = Product.objects.get(id=pk)
     task.delete()
-    return redirect('todo')    
+    return redirect('showitem')    
 
 def updateItem(request, pk):
     todo = Product.objects.get(id=pk)
@@ -25,5 +31,5 @@ def updateItem(request, pk):
         updateform = TodoForm(request.POST, instance= todo)
         if updateform.is_valid():
             updateform.save()
-            return redirect('todo')    
+            return redirect('showitem')    
     return render(request,'updateItem.html', {'todo':todo, 'updateform': updateform})        

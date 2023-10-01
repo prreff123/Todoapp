@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css"
+        integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="pt-4">
+            <div class="col-lg-4 mx-auto border rounded p-4 mt-4 mb-4">
+                <h3 class="alert alert-light border rounded mt-3 mb-4">Show Product Here!</h3>
+                {% for todo in tasks %}
+                <p class="text-bg-light">{{todo.name}}</p>
+                <p class="text-bg-light">{{todo.description}}</p>
+                <p class="text-bg-light">{{todo.price}}</p>
+
+                <a href="{% url 'updateItem' todo.id %}"><button
+                        class="Edit p-sm-2 btn btn-primary btn-sm">Update</button></a>
+                <a href="{% url 'deleteItem' todo.id %}"><button
+                        class="Delete p-sm-2 btn btn-danger btn-sm">Delete</button></a>
+                {% endfor %}
+            </div>
+        </div>
+        <a href="{% url 'todo' %}"><button class="p-sm-2 btn btn-danger btn-sm">Back to home</button></a>
+    </div>
+
+</body>
+
+</html>
