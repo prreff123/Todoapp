@@ -24,9 +24,9 @@
                 <a href="{% url 'deleteItem' todo.id %}"><button
                         class="Delete p-sm-2 btn btn-danger btn-sm">Delete</button></a>
                 {% endfor %}
+                <a href="{% url 'todo' %}"><button class="p-sm-2 btn btn-danger btn-sm">Back to home</button></a>
             </div>
         </div>
-        <a href="{% url 'todo' %}"><button class="p-sm-2 btn btn-danger btn-sm">Back to home</button></a>
     </div>
 
 </body>
